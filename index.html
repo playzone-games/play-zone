@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070b18">
+<title>PLAY ZONE — Free Browser Games</title>
+<style>
+:root{--bg:#070b18;--panel:#101a31;--panel2:#14213d;--cyan:#19d7ff;--blue:#536dff;--pink:#ff3e9d;--text:#f4f7ff;--muted:#9aa8c7}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -15%,#172d58 0,#070b18 48%);color:var(--text);font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;min-height:100vh}
+header{padding:22px max(5vw,20px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff14;background:#080e1dcc;position:sticky;top:0;z-index:5;backdrop-filter:blur(14px)}
+.brand{display:flex;align-items:center;gap:12px;font-weight:1000;font-size:clamp(22px,4vw,32px);letter-spacing:1.5px}.brand-mark{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,var(--cyan),var(--blue) 60%,var(--pink));display:grid;place-items:center;box-shadow:0 0 25px #19d7ff55}.brand-mark span{font-size:23px}
+nav{display:flex;gap:20px;color:var(--muted);font-size:14px}nav a{color:inherit;text-decoration:none}nav a:hover{color:var(--cyan)}
+.hero{padding:68px 20px 38px;text-align:center;max-width:950px;margin:auto}.eyebrow{color:var(--cyan);font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase}.hero h1{font-size:clamp(40px,8vw,76px);line-height:1;margin:16px 0;background:linear-gradient(90deg,#fff,#8cecff,#a5aaff);color:transparent;background-clip:text}.hero p{color:var(--muted);font-size:16px;max-width:600px;margin:0 auto 25px}
+.search{max-width:510px;margin:auto;position:relative}.search input{width:100%;padding:16px 20px 16px 48px;border:1px solid #ffffff20;border-radius:15px;background:#101a31;color:white;font-size:15px;outline:none}.search input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px #19d7ff18}.search span{position:absolute;left:17px;top:13px;font-size:20px}
+main{max-width:1160px;margin:auto;padding:15px 20px 65px}.section-head{display:flex;align-items:end;justify-content:space-between;margin:20px 0}.section-head h2{font-size:24px;margin:0}.section-head p{color:var(--muted);margin:5px 0 0;font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}.card{background:linear-gradient(145deg,#14213d,#0d1529);border:1px solid #ffffff13;border-radius:19px;overflow:hidden;transition:.2s;box-shadow:0 12px 30px #0003}.card:hover{transform:translateY(-5px);border-color:#19d7ff70;box-shadow:0 16px 35px #0005}.art{height:145px;display:grid;place-items:center;font-size:66px;position:relative;overflow:hidden}.art:before,.art:after{content:"";position:absolute;border-radius:50%;filter:blur(2px);opacity:.35}.art:before{width:180px;height:180px;background:#19d7ff;left:-55px;top:65px}.art:after{width:150px;height:150px;background:#ff3e9d;right:-50px;top:-70px}.art span{position:relative;z-index:1;filter:drop-shadow(0 8px 12px #0008)}.art.runner{background:linear-gradient(135deg,#0b7285,#152a62)}.art.hill{background:linear-gradient(135deg,#246b50,#182b59)}.art.racer{background:linear-gradient(135deg,#7a2459,#172e66)}.art.flappy{background:linear-gradient(135deg,#157b9b,#254c8c)}.art.puzzle{background:linear-gradient(135deg,#6c3c9d,#183b69)}
+.card-body{padding:16px}.card h3{margin:0 0 6px;font-size:18px}.card p{margin:0 0 15px;color:var(--muted);font-size:13px;min-height:34px}.play{width:100%;border:0;border-radius:11px;padding:12px;background:linear-gradient(90deg,#12bde8,#586bff);color:white;font-weight:800;cursor:pointer;font-size:14px}.play:hover{filter:brightness(1.12)}
+footer{text-align:center;color:#72809e;border-top:1px solid #ffffff12;padding:25px;font-size:12px}
+.modal{position:fixed;inset:0;background:#030611eF;z-index:10;display:none;align-items:center;justify-content:center;padding:15px}.modal.show{display:flex}.gamebox{width:min(760px,100%);background:#0d162b;border:1px solid #ffffff24;border-radius:20px;overflow:hidden;box-shadow:0 25px 80px #000b}.gamebar{display:flex;align-items:center;justify-content:space-between;padding:15px 18px;border-bottom:1px solid #ffffff18}.gamebar h2{margin:0;font-size:18px}.close{background:#ffffff12;color:white;border:1px solid #ffffff22;border-radius:9px;padding:8px 12px;cursor:pointer}.gamecontent{padding:18px;text-align:center}.instructions{color:var(--muted);font-size:13px;margin:0 0 12px}.stage{width:100%;max-width:650px;height:360px;background:#07101f;border:1px solid #ffffff1a;border-radius:14px;display:block;margin:auto;touch-action:manipulation}.game-actions{display:flex;justify-content:center;gap:10px;margin-top:13px;flex-wrap:wrap}.game-actions button,.touch-controls button{background:#17294a;color:white;border:1px solid #ffffff22;border-radius:10px;padding:10px 17px;font-weight:700;cursor:pointer}.touch-controls{display:none;justify-content:center;gap:12px;margin-top:10px}.touch-controls button{min-width:75px}.scoreline{color:var(--cyan);font-weight:800;margin:10px}
+@media(max-width:600px){header{padding:14px 17px}nav{gap:10px;font-size:12px}.hero{padding-top:48px}.stage{height:310px}.touch-controls{display:flex}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><div class="brand-mark"><span>🎮</span></div>PLAY ZONE</div>
+  <nav><a href="#games">Games</a><a href="#about">About</a></nav>
+</header>
+<section class="hero">
+  <div class="eyebrow">YOUR NEXT LEVEL STARTS HERE</div>
+  <h1>PLAY. COMPETE. REPEAT.</h1>
+  <p>Jump into quick, free browser games. No download needed — choose a game and start playing!</p>
+  <div class="search"><span>⌕</span><input id="search" type="search" placeholder="Search games..." aria-label="Search games"></div>
+</section>
+<main id="games">
+  <div class="section-head"><div><h2>🔥 Popular Games</h2><p>Pick a game and have fun.</p></div></div>
+  <div class="grid" id="gameGrid">
+    <article class="card" data-name="city runner runner arcade"><div class="art runner"><span>🏃</span></div><div class="card-body"><h3>City Runner</h3><p>Dodge obstacles and run as far as you can.</p><button class="play" data-game="runner">PLAY NOW →</button></div></article>
+    <article class="card" data-name="hill climb racing car"><div class="art hill"><span>🚙</span></div><div class="card-body"><h3>Hill Climb</h3><p>Drive over hills and keep your balance.</p><button class="play" data-game="hill">PLAY NOW →</button></div></article>
+    <article class="card" data-name="neon racer car racing"><div class="art racer"><span>🏎️</span></div><div class="card-body"><h3>Neon Racer</h3><p>Switch lanes and avoid incoming traffic.</p><button class="play" data-game="racer">PLAY NOW →</button></div></article>
+    <article class="card" data-name="flappy flyer bird arcade"><div class="art flappy"><span>🐤</span></div><div class="card-body"><h3>Flappy Flyer</h3><p>Fly through the gaps and beat your score.</p><button class="play" data-game="flappy">PLAY NOW →</button></div></article>
+    <article class="card" data-name="2048 puzzle number brain"><div class="art puzzle"><span>🔢</span></div><div class="card-body"><h3>2048 Puzzle</h3><p>Join matching tiles to reach 2048.</p><button class="play" data-game="2048">PLAY NOW →</button></div></article>
+  </div>
+</main>
+<section id="about" style="max-width:1160px;margin:auto;padding:0 20px 45px"><div class="section-head"><div><h2>About PLAY ZONE</h2><p>A small collection of original mini-games made for quick fun.</p></div></div></section>
+<footer>© 2026 PLAY ZONE · Made for fun · No downloads required</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="gameTitle">
+ <div class="gamebox"><div class="gamebar"><h2 id="gameTitle">Game</h2><button class="close" id="close">✕ Close</button></div>
+ <div class="gamecontent"><p class="instructions" id="instructions"></p><div class="scoreline" id="scoreline"></div><canvas class="stage" id="stage" width="650" height="360"></canvas>
+ <div class="touch-controls" id="touch"></div><div class="game-actions"><button id="start">Start / Restart</button><button id="pause">Pause</button></div></div></div>
+</div>
+<script>
+const $=s=>document.querySelector(s), canvas=$('#stage'),ctx=canvas.getContext('2d');
+let current='',timer=null,raf=0,paused=false,game={};
+const W=650,H=360;
+const titles={runner:'City Runner',hill:'Hill Climb',racer:'Neon Racer',flappy:'Flappy Flyer','2048':'2048 Puzzle'};
+const instructions={runner:'Press SPACE, ↑ or tap JUMP to leap over barriers.',hill:'Hold RIGHT to move forward; LEFT to slow down. Keep the car on the hills.',racer:'Use ← / → or the buttons to change lanes. Avoid traffic.',flappy:'Press SPACE, ↑ or tap FLAP to fly through the gaps.', '2048':'Use arrow keys or swipe to slide tiles. Match equal numbers.'};
+function openGame(name){current=name;$('#gameTitle').textContent=titles[name];$('#instructions').textContent=instructions[name];$('#modal').classList.add('show');$('#touch').innerHTML='';setupTouch(name);startGame()}
+function closeGame(){stopLoop();$('#modal').classList.remove('show');current=''}
+$('#close').onclick=closeGame;$('#modal').addEventListener('click',e=>{if(e.target===$('#modal'))closeGame()});
+document.querySelectorAll('[data-game]').forEach(b=>b.onclick=()=>openGame(b.dataset.game));
+$('#search').addEventListener('input',e=>{const q=e.target.value.toLowerCase();document.querySelectorAll('.card').forEach(c=>c.style.display=c.dataset.name.includes(q)?'':'none')});
+function stopLoop(){cancelAnimationFrame(raf);raf=0}
+function loop(fn){stopLoop();const tick=()=>{if(!paused){fn();raf=requestAnimationFrame(tick)}};raf=requestAnimationFrame(tick)}
+function text(t,x,y,size=20,color='#fff',align='center'){ctx.fillStyle=color;ctx.font=`800 ${size}px system-ui`;ctx.textAlign=align;ctx.fillText(t,x,y)}
+function clear(bg='#07101f'){ctx.fillStyle=bg;ctx.fillRect(0,0,W,H)}
+function setupTouch(name){let labels=name==='racer'?['◀ LEFT','RIGHT ▶']:name==='hill'?['◀ SLOW','GO ▶']:name==='flappy'?['FLAP']:name==='runner'?['JUMP']:[];labels.forEach((l,i)=>{let b=document.createElement('button');b.textContent=l;b.onpointerdown=e=>{e.preventDefault();action(i)};$('#touch').appendChild(b)})}
+function action(i){if(current==='runner'&&game.running){if(game.y>=270)game.vy=-13}
+if(current==='flappy'&&game.running)game.birdV=-6.5;
+if(current==='racer')game.lane=Math.max(0,Math.min(2,game.lane+(i===0?-1:1)));
+if(current==='hill')game.speed=i===0?1:3.2}
+function startGame(){paused=false;$('#pause').textContent='Pause';$('#scoreline').textContent='';game={};if(current==='2048'){init2048();draw2048();return}
+if(current==='runner'){game={y:270,vy:0,obs:[],score:0,frame:0,running:true};loop(drawRunner)}
+if(current==='hill'){game={x:70,speed:2,score:0,frame:0,running:true};loop(drawHill)}
+if(current==='racer'){game={lane:1,cars:[],score:0,frame:0,running:true};loop(drawRacer)}
+if(current==='flappy'){game={y:170,birdV:0,pipes:[],score:0,frame:0,running:true};loop(drawFlappy)}}
+function endGame(){game.running=false;stopLoop();text('GAME OVER',W/2,160,34,'#ff639d');text('Press Start / Restart to play again',W/2,200,16)}
+$('#start').onclick=startGame;$('#pause').onclick=()=>{if(current==='2048')return;paused=!paused;$('#pause').textContent=paused?'Resume':'Pause';if(!paused&&current)loop(({runner:drawRunner,hill:drawHill,racer:drawRacer,flappy:drawFlappy})[current])};
+window.addEventListener('keydown',e=>{if(!current)return;if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight',' '].includes(e.key))e.preventDefault();if(current==='2048'){move2048(e.key);return}if(e.key===' '||e.key==='ArrowUp'){action(0)}if(current==='racer'&&(e.key==='ArrowLeft'||e.key==='ArrowRight'))action(e.key==='ArrowLeft'?0:1);if(current==='hill'&&(e.key==='ArrowRight'||e.key==='ArrowLeft'))game.speed=e.key==='ArrowRight'?3.2:1});
+function drawRunner(){if(!game.running)return;game.frame++;game.score+=.08;clear('#09172a');ctx.fillStyle='#142d4b';for(let i=0;i<12;i++)ctx.fillRect((i*75-game.frame*1.4)%W,80,35,190);ctx.fillStyle='#263b51';ctx.fillRect(0,300,W,60);ctx.strokeStyle='#19d7ff';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(0,300);ctx.lineTo(W,300);ctx.stroke();
+game.vy+=.65;game.y+=game.vy;if(game.y>270){game.y=270;game.vy=0}if(game.frame%85===0)game.obs.push({x:W,w:27,h:35+Math.random()*20});game.obs.forEach(o=>o.x-=5);game.obs=game.obs.filter(o=>o.x>-40);ctx.fillStyle='#ff4d9a';game.obs.forEach(o=>{ctx.fillRect(o.x,300-o.h,o.w,o.h);if(o.x<125&&o.x+o.w>90&&game.y+30>300-o.h)endGame()});ctx.fillStyle='#19d7ff';ctx.fillRect(90,game.y,32,30);ctx.fillStyle='#fff';ctx.fillRect(110,game.y+7,5,5);text('DISTANCE: '+Math.floor(game.score),20,30,16,'#fff','left')}
+function ground(x){return 270+Math.sin((x+game.score*7)/65)*42+Math.sin((x+game.score*7)/29)*10}
+function drawHill(){if(!game.running)return;game.frame++;game.score+=game.speed*.08;clear('#10243c');ctx.fillStyle='#163d48';ctx.beginPath();ctx.moveTo(0,270);for(let x=0;x<=W;x+=5)ctx.lineTo(x,ground(x));ctx.lineTo(W,H);ctx.lineTo(0,H);ctx.fill();ctx.fillStyle='#1bd0b4';ctx.fillRect(0,320,W,3);let y=ground(115)-30;ctx.save();ctx.translate(115,y);ctx.rotate(Math.cos((115+game.score*7)/65)*-.17);ctx.fillStyle='#ffad45';ctx.fillRect(-28,-12,58,22);ctx.fillStyle='#111827';ctx.beginPath();ctx.arc(-17,12,9,0,7);ctx.arc(18,12,9,0,7);ctx.fill();ctx.restore();text('DISTANCE: '+Math.floor(game.score*10),20,30,16,'#fff','left');}
+function drawRacer(){if(!game.running)return;game.frame++;game.score+=.1;clear('#10162c');ctx.fillStyle='#202e4b';ctx.fillRect(115,0,420,H);ctx.strokeStyle='#536dff';ctx.setLineDash([24,20]);ctx.lineWidth=4;for(let x of [255,395]){ctx.beginPath();ctx.moveTo(x,-(game.frame*5%44));ctx.lineTo(x,H);ctx.stroke()}ctx.setLineDash([]);if(game.frame%65===0)game.cars.push({lane:Math.floor(Math.random()*3),y:-70});game.cars.forEach(c=>c.y+=4);game.cars=game.cars.filter(c=>c.y<H+60);game.cars.forEach(c=>{let x=155+c.lane*140;ctx.fillStyle='#ff477e';ctx.fillRect(x,c.y,55,75);if(c.lane===game.lane&&c.y>260&&c.y<340)endGame()});let px=155+game.lane*140;ctx.fillStyle='#19d7ff';ctx.fillRect(px,285,55,65);ctx.fillStyle='#fff';ctx.fillRect(px+10,293,35,12);text('SCORE: '+Math.floor(game.score),20,30,16,'#fff','left')}
+function drawFlappy(){if(!game.running)return;game.frame++;game.birdV+=.32;game.y+=game.birdV;clear('#0b2741');ctx.fillStyle='#1b5775';ctx.fillRect(0,315,W,45);if(game.frame%95===0)game.pipes.push({x:W,gap:125+Math.random()*95});game.pipes.forEach(p=>p.x-=3.2);game.pipes=game.pipes.filter(p=>p.x>-60);ctx.fillStyle='#49d17d';game.pipes.forEach(p=>{ctx.fillRect(p.x,0,55,p.gap-65);ctx.fillRect(p.x,p.gap+65,55,H-p.gap);if(95+25>p.x&&95<p.x+55&&(game.y<p.gap-65||game.y+22>p.gap+65))endGame();if(!p.passed&&p.x<95){p.passed=true;game.score++}});ctx.fillStyle='#ffd34e';ctx.beginPath();ctx.arc(105,game.y,13,0,7);ctx.fill();ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(110,game.y-4,4,0,7);ctx.fill();if(game.y<0||game.y>315)endGame();text('SCORE: '+game.score,20,30,16,'#fff','left')}
+let board,score2048=0;
+function init2048(){board=Array.from({length:4},()=>Array(4).fill(0));score2048=0;addTile();addTile()}
+function addTile(){let empty=[];board.forEach((r,y)=>r.forEach((v,x)=>{if(!v)empty.push([y,x])}));if(empty.length){let [y,x]=empty[Math.floor(Math.random()*empty.length)];board[y][x]=Math.random()<.9?2:4}}
+function draw2048(){clear('#10182b');let cell=77,gap=8,startX=(W-(cell*4+gap*3))/2,startY=22;ctx.fillStyle='#9aa8c7';ctx.font='bold 15px system-ui';ctx.textAlign='left';ctx.fillText('SCORE: '+score2048, startX, startY+cell*4+gap*3+28);board.forEach((r,y)=>r.forEach((v,x)=>{let px=startX+x*(cell+gap),py=startY+y*(cell+gap);ctx.fillStyle=v?({2:'#315b83',4:'#287b9a',8:'#337e9b',16:'#536dff',32:'#7356bd',64:'#a34f9c',128:'#bd7180',256:'#ce9450',512:'#d7ad42',1024:'#d4c04d',2048:'#f2d65c'}[v]||'#e7c64c'):'#1b2942';ctx.beginPath();ctx.roundRect(px,py,cell,cell,9);ctx.fill();if(v)text(v,px+cell/2,py+cell/2+8,v>=100?22:27,'#fff')}))}
+function move2048(key){let dir={ArrowLeft:'left',ArrowRight:'right',ArrowUp:'up',ArrowDown:'down'}[key];if(!dir)return;let old=JSON.stringify(board);for(let i=0;i<4;i++){let line=[];for(let j=0;j<4;j++){let y=dir==='up'?j:dir==='down'?3-j:i,x=dir==='left'?j:dir==='right'?3-j:i;line.push(board[y][x])}let vals=line.filter(Boolean);for(let k=0;k<vals.length-1;k++)if(vals[k]===vals[k+1]){vals[k]*=2;score2048+=vals[k];vals.splice(k+1,1)}while(vals.length<4)vals.push(0);for(let j=0;j<4;j++){let y=dir==='up'?j:dir==='down'?3-j:i,x=dir==='left'?j:dir==='right'?3-j:i;board[y][x]=vals[j]}}if(old!==JSON.stringify(board))addTile();draw2048()}
+let touchStart=null;canvas.addEventListener('touchstart',e=>{touchStart=[e.touches[0].clientX,e.touches[0].clientY]},{passive:true});canvas.addEventListener('touchend',e=>{if(!touchStart||current!=='2048')return;let dx=e.changedTouches[0].clientX-touchStart[0],dy=e.changedTouches[0].clientY-touchStart[1];move2048(Math.abs(dx)>Math.abs(dy)?(dx>0?'ArrowRight':'ArrowLeft'):(dy>0?'ArrowDown':'ArrowUp'));touchStart=null},{passive:true});
+</script>
+</body>
+</html>
